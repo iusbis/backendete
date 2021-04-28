@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav " >
+                    <li><a th:href="@{/}">Profile</a></li>
+                    <li><a th:href="@{/userdata}">UserInfo</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+    <h1>Edit info </h1>
+
+    <form th:method="post" th:object="${user}" th:action="@{/edituser(userId=${user.id})}">
+        <label>Name</label>
+        <span style="color: red;" th:if="${nameInvalid}">Username Invalid.</span>
+        <input type="text" name="name" id="name" th:value="${user.name}" required>
+        <br>
+        <!--age-->
+        <label>Age</label>
+        <span style="color: red;" th:if="${ageInvalid}">Username Invalid.</span>
+        <input type="text" name="age" id="age" th:value="${user.age}" required>
+        <br>
+        <!--email-->
+        <label>Email</label>
+        <span style="color: red;" th:if="${emailInvalid}">Username Invalid.</span>
+        <input type="text" name="email" id="email" th:value="${user.email}" required>
+        <br>
+        <!--Address-->
+        <label>Address</label>
+        <span style="color: red;" th:if="${addressInvalid}">Username Invalid.</span>
+        <input type="text" name="address" id="address" th:value="${user.address}" required>
+        <br>
+        <!--Phone Num-->
+        <label>Phone Number</label>
+        <span style="color: red;" th:if="${phoneInvalid}">Username Invalid.</span>
+        <input type="text" name="phoneNumber" id="phoneNumber" th:value="${user.phoneNumber}" required>
+        <br>
+
+
+        <input type="submit" value="Submit" />
+    </form>
+    </div>
+</body>
+</html>
